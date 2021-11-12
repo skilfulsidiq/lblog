@@ -56,7 +56,9 @@ user =>
 ```
 ## Explanation
  Grid Page: All users can access this pages and see list of all posts with pagination.
-            A loggedin user can edit or delete his/her posts.
+            A loggedin user can edit or delete his/her post.
+            The grid list can be filter by title
+            
  Form Page: This  page can only be accessed by loggedin users only.
 
  Admin Dashboard: This can only be accessed by the admin.
