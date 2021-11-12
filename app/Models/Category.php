@@ -8,4 +8,21 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','slug'];
+
+    /**
+     * Set name and slug
+     */
+    public function setNameAttribute($value){
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
+
+    /**
+     * Relationship
+     */
+    //Categories has many blogs
+    public function blogs(){
+        return $this->hasMany(Blog::class,'category_id');
+    }
 }
