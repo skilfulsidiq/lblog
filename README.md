@@ -43,7 +43,23 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
+Upon seeding, two users are created, admin and normal user
+``` bash
+Admin =>
+    email: admin@test.com
+    password: password
+```
+``` bash
+user =>
+    email: user@test.com
+    password: password
+```
+## Explanation
+ Grid Page: All users can access this pages and see list of all posts with pagination.
+            A loggedin user can edit or delete his/her posts.
+ Form Page: This  page can only be accessed by loggedin users only.
 
+ Admin Dashboard: This can only be accessed by the admin.
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
