@@ -16,10 +16,18 @@ use PhpParser\Node\Expr\PostDec;
 */
 
 Route::group(['namespace'=>'Pages'],function(){
-    Route::get('/', 'PostController@index')->name('welcome');
-    Route::get('/post-form', 'PostController@showPostForm')->name('create-post');
-    Route::post('update-post/{slug?}', 'PostController@updatePost')->name('update-post');
-    Route::delete('delete-post/{slug}', 'PostController@deletePost')->name('delete-post');
+    Route::match(['get','post'], '/', 'PostController@index')->name('welcome');
+    Route::group(['middleware'=>'auth'],function(){
+        // Route::get( '/mypost', 'PostController@userPost')->name('mypost');
+        Route::get('/post-form/{slug?}', 'PostController@showPostForm')->name('create-post');
+        Route::post('update-post/{slug?}', 'PostController@updatePost')->name('update-post');
+        Route::get('delete-post/{slug}', 'PostController@deletePost')->name('delete-post');
+    });
+
+
+    Route::group(['prefix'=>'dashboard','middleware'=>['auth']],function(){
+          Route::get('/', 'PageController@dashboard')->name('dashboard');
+    });
 });
 
 Auth::routes();

@@ -11,3 +11,15 @@
 {
     cursor: pointer;
 }
+
+.bg-img{
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat:no-repeat;
+    border-radius: 10px 10px 0 0;
+}
+.card-radius{
+    border-radius: 10px;
+}

@@ -27,7 +27,13 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected function authenticated($request,$user){
+    if($user->user_type === 'admin'){
+        return redirect()->intended('dashboard'); //redirect to admin panel
+    }
 
+    return redirect()->intended('/'); //redirect to standard user homepage
+}
     /**
      * Create a new controller instance.
      *

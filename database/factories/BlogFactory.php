@@ -18,6 +18,7 @@ class BlogFactory extends Factory
             'title' => $this->faker->name(),
             'image' => $this->faker->imageUrl(350,220),
             'description'=> $this->faker->text(),
+            'user_id'=> $this->faker->numberBetween(2,3),
             'category_id'=> $this->faker->numberBetween(1,3)
         ];
 

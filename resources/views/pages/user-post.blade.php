@@ -6,19 +6,7 @@
         <a href="{{route('create-post')}}" class="btn btn-primary">Create Post</a>
        </div>
 
-       <div class="row d-flex justify-content-center">
-           <div class="col-md-4">
-
-                     <form id="filter" action="{{route('welcome')}}" method="post">
-                        @csrf
-                        <div class="input-group ">
-                    <input type="text" class="form-control" id="title" name="title" value="{{$title}}"  placeholder="Filter by title" onblur="submit()" onkeyup="submit()">
-                    {{-- <button type="button" class="btn btn-primary" onclick="submit()">Filter</button> --}}
-                    </div>
-                 </form>
-
-           </div>
-       </div>
+    
        <div class="row">
              @forelse ($blogs as $blog )
                 <div class="col-md-4 mt-4">
