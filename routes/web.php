@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Pages\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\PostDec;
 
@@ -24,12 +25,14 @@ Route::group(['namespace'=>'Pages'],function(){
         Route::get('delete-post/{slug}', 'PostController@deletePost')->name('delete-post');
     });
 
-
-    Route::group(['prefix'=>'dashboard','middleware'=>['auth']],function(){
+    /**Admin ROutes */
+    Route::group(['prefix'=>'dashboard','middleware'=>['auth','admin']],function(){
           Route::get('/', 'PageController@dashboard')->name('dashboard');
+          Route::get('/update-posts/{slug?}', 'PageController@showPostForm')->name('admin-update-posts');
+          Route::get('/all-posts', 'PostController@allPostForAdmin')->name('all-posts');
+          Route::get('/all-users', 'UserController@allUsers')->name('all-users');
     });
 });
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

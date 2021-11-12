@@ -1,0 +1,25 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Lblog') }}</title>
+
+
+
+    <!-- Fonts -->
+   <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ asset('css/font-awesome/4.7.0/css/font-awesome.min.css')}}"
+    />
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/parley.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+</head>

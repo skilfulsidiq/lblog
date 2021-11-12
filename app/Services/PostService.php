@@ -19,6 +19,9 @@ class PostService
         }
         return $blog->orderBy('created_at','desc')->paginate(10);
     }
+    public function allPostsForAdmin(){
+        return Blog::with('category:id,name')->orderBy('created_at','desc')->get();
+    }
 
     public function createOrUpdatedPost($arr,$slug=null){
 

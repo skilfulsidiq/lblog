@@ -10,9 +10,9 @@
         </main>
     </div>
       <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/parsley.js') }}" defer></script>
-    <script src="{{ asset('js/toastr.min.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
+    <script src="{{ asset('js/parsley.js') }}" ></script>
+    <script src="{{ asset('js/toastr.min.js') }}" ></script>
     @include('includes.flash')
     @stack('custom_script')
 </body>

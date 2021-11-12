@@ -6,7 +6,7 @@
             <h5 class="card-title font-weight-bold">{{$blog->title??''}}</h5>
             <div class="d-flex justify-content-between"">
                 <h6 class="card-subtitle mb-2 text-muted">{{$blog->category->name??''}}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">{{date('d-m-Y', strtotime($blog->created_at));}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{date('d-m-Y', strtotime($blog->created_at))}}</h6>
             </div>
 
             <p class="card-text" style="height: 100px">{{Str::limit($blog->description??'',200)}}</p>

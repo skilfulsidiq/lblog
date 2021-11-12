@@ -20,9 +20,12 @@ class AdminMiddleware
         if(Auth::check()){
             $user_type = Auth::user()->user_type;
             if($user_type=='admin'){
-                return redirect()->route('dashboard');
+                 return $next($request);
+                // return redirect()->route('dashboard');
             }
+            abort(403,'Unauthorized Access');
         }
-        return $next($request);
+        abort(403,'Unauthorized Access');
+        // return $next($request);
     }
 }

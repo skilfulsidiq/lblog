@@ -1,13 +1,22 @@
 <?php
 
-if(!function_exists('limitString'))
+use Illuminate\Support\Facades\Route;
+
+if(!function_exists('userFullName'))
 {
-    function limitString($value, $limit = 200, $end = '...')
+    function userFullName()
     {
-        if (mb_strwidth($value, 'UTF-8') <= $limit)
-        {
-            return $value;
-        }
-        return rtrim(mb_strimwidth($value, 0, $limit, '', 'UTF-8')).$end;
+        return auth()->user()->name;
     }
+}
+if(!function_exists('setSingleActive')){
+  function setSingleActive($path,$class=null){
+    $active = Route::currentRouteName();
+    // return Request::is($path . '*') ? ' class=active' :  '';
+    if($active == $path){
+      return ($class)?$class:'active';
+    }else{
+      return '';
+    }
+  }
 }

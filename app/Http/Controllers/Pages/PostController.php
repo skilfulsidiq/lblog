@@ -26,6 +26,10 @@ class PostController extends BaseController
         $this->blog = $blog;
     }
 
+    public function allPostForAdmin(){
+        $blogs = $this->blog->allPostsForAdmin();
+        return view('pages/dashboard/all-posts', compact('blogs'));
+    }
     public function userPost(){
         $user_id = Auth::user()->id;
         $blogs = $this->blog->userPosts($user_id);
@@ -76,7 +80,11 @@ class PostController extends BaseController
             if(!$result){
                  return $this->responseRedirectBack('Error occurred while updating blog.', 'error', true, true);
             }
+            if(Auth::user()->user_type=='admin'){
+                return $this->responseRedirect('all-posts','Post updated successfully' ,'success',false, false);
+            }
             return $this->responseRedirect('welcome','Post updated successfully' ,'success',false, false);
+
     }
     /**
      * Delete Post
@@ -87,6 +95,6 @@ class PostController extends BaseController
             if(!$result){
                  return $this->responseRedirectBack('Error occurred while deleting blog.', 'error', true, true);
             }
-            return $this->responseRedirect('welcome','Post updated successfully' ,'success',false, false);
+            return $this->responseRedirectBack('Post updated successfully' ,'success',false, false);
     }
 }
