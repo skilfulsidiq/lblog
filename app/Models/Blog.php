@@ -13,22 +13,27 @@ class Blog extends Model
        /**
      * Set name and slug
      */
-    public function setTitleAttribute($value){
+    public function setTitleAttribute($value)
+    {
         $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
+        $this->attributes['slug'] = time().Str::slug($value);
+    }
+    public function setImageAttribute($value)
+    {
+
+         $this->attributes['image'] = url($value);
     }
     /**
      * Acceccors
      * get image
      */
-    public function getImageAttribute(){
-         return url($this->attributes['image']);
-    }
+
     /**
      * Relationship
      */
     //Blog belongs to a category
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class,'category_id')->withDefault();
     }
 }

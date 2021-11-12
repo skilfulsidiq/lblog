@@ -13,7 +13,8 @@ class Category extends Model
     /**
      * Set name and slug
      */
-    public function setNameAttribute($value){
+    public function setNameAttribute($value)
+    {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
@@ -22,7 +23,8 @@ class Category extends Model
      * Relationship
      */
     //Categories has many blogs
-    public function blogs(){
+    public function blogs()
+    {
         return $this->hasMany(Blog::class,'category_id');
     }
 }

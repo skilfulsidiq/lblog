@@ -9,7 +9,18 @@
                 </div>
            </div>
        </div>
+       <div class="row">
+             @forelse ($blogs as $blog )
+                <div class="col-md-4 mt-4">
+                    <x-blog-card :blog="$blog"/>
+                </div>
+             @empty
 
-        <x-blog-card title="Welcome" image="http://" date="10-12-2021" category="Main" description="hejj"/>
+       @endforelse
+       </div>
+
+
+       {{$blogs->links()}}
+
    </div>
 @endsection

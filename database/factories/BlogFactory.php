@@ -18,7 +18,7 @@ class BlogFactory extends Factory
             'title' => $this->faker->name(),
             'image' => $this->faker->imageUrl(350,220),
             'description'=> $this->faker->text(),
-            'category_id'=> $this->faker->random_int(1,3)
+            'category_id'=> $this->faker->numberBetween(1,3)
         ];
 
     }

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Pages\PostController;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\PostDec;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace'=>'Pages'],function(){
+    Route::get('/', 'PostController@index')->name('welcome');
+    Route::get('/post-form', 'PostController@showPostForm')->name('create-post');
+    Route::post('update-post/{slug?}', 'PostController@updatePost')->name('update-post');
+    Route::delete('delete-post/{slug}', 'PostController@deletePost')->name('delete-post');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
